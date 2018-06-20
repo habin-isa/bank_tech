@@ -1,17 +1,25 @@
 require 'account.rb'
 
 describe Account do
-  it "#display, balance initializes as 0" do
-    expect(subject.display).to eq 0
+subject(:account) { described_class.new(transaction) }
+let(:transaction) { double(:transaction) }
+
+  context '#balance' do
+    it 'Initializes as 0' do
+      expect(account.balance).to eq(0)
+    end
   end
-  it "#top_up, balance displays as 60" do
-    subject.top_up(60)
-    expect(subject.display).to eq 60
+
+  context '#deposit' do
+    it 'Responds to the method' do
+      expect(account).to respond_to(:deposit).with(2).argument
+    end
   end
-  it "#withdraw 20, new balance is 40" do
-    subject.top_up(60)
-    subject.withdraw(20)
-    expect(subject.display).to eq 40
+
+  context '#transaction' do
+    it 'Equal to the transaction' do
+      expect(transaction).to eq(transaction)
+    end
   end
 
 end

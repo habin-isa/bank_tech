@@ -15,17 +15,27 @@ let(:date) { double(:date) }
     it 'Responds to the method' do
       expect(account).to respond_to(:deposit).with(2).argument
     end
+    it 'Returns the balance, when #deposit is called on the transaction class' do
+      allow(transaction).to receive(:deposit).and_return(500)
+      account.deposit(:date, 200)
+      expect(transaction).to have_received(:deposit).with(:date, 200)
+    end
+  end
+
+  context '#withdraw' do
+    it "Reposonds to the method" do
+      expect(account).to respond_to(:withdraw).with(2).argument
+    end
+    it 'Returns the balance, when #withdraw is called on the transaction class' do
+      allow(transaction).to receive(:withdraw).and_return(500)
+      account.withdraw(:date, 500)
+      expect(transaction).to have_received(:withdraw).with(:date, 500)
+    end
   end
 
   context '#transaction' do
     it 'Equal to the transaction' do
       expect(transaction).to eq(transaction)
-    end
-
-    it 'Returns the balance, when #deposit is called on the transaction class' do
-      allow(transaction).to receive(:deposit).and_return(500)
-      account.deposit(:date, 200)
-      expect(transaction).to have_received(:deposit).with(:date, 200)
     end
   end
 

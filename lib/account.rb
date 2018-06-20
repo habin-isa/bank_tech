@@ -15,4 +15,7 @@ def deposit(date, amount)
   transaction.deposit(date, amount)
 end
 
+def withdraw(date, amount)
+  transaction.withdraw(date, amount)
+end
 end

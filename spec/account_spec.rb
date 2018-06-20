@@ -3,6 +3,7 @@ require 'account.rb'
 describe Account do
 subject(:account) { described_class.new(transaction) }
 let(:transaction) { double(:transaction) }
+let(:date) { double(:date) }
 
   context '#balance' do
     it 'Initializes as 0' do
@@ -19,6 +20,12 @@ let(:transaction) { double(:transaction) }
   context '#transaction' do
     it 'Equal to the transaction' do
       expect(transaction).to eq(transaction)
+    end
+
+    it 'Returns the balance, when #deposit is called on the transaction class' do
+      allow(transaction).to receive(:deposit).and_return(500)
+      account.deposit(:date, 200)
+      expect(transaction).to have_received(:deposit).with(:date, 200)
     end
   end
 

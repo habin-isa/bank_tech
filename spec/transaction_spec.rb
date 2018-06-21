@@ -16,4 +16,11 @@ describe Transaction do
     end
   end
 
+  context '#withdraw' do
+    it 'Should log the withdrawal with date and credit amount' do
+      transaction.withdraw("28-05-18", 100)
+      expect(transaction.transaction_list).to include(["28-05-18", 100])
+    end
+  end
+
 end

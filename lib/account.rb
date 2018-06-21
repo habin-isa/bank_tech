@@ -12,10 +12,17 @@ def display
 end
 
 def deposit(date, amount)
+  credit(amount)
   transaction.deposit(date, amount)
 end
 
 def withdraw(date, amount)
   transaction.withdraw(date, amount)
+end
+
+private
+
+def credit(amount)
+  @balance += (amount)
 end
 end

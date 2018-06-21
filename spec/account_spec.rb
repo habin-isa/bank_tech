@@ -3,7 +3,7 @@ require 'account.rb'
 describe Account do
 subject(:account) { described_class.new(transaction) }
 let(:transaction) { double(:transaction) }
-let(:date) { double(:date) }
+let(:date) { double(:date, :deposit) }
 
   describe '#balance' do
     it 'Initializes as 0' do
@@ -30,13 +30,20 @@ let(:date) { double(:date) }
 end
 
   describe '#withdraw' do
-    it "Reposonds to the method" do
+    before do
+      allow(transaction).to receive(:deposit)
+      allow(transaction).to receive(:withdraw)
+      account.deposit(:date, 200)
+      account.withdraw(:date, 100)
+    end
+    it "Responds to the method" do
       expect(account).to respond_to(:withdraw).with(2).argument
     end
-    it 'Returns the balance, when #withdraw is called on the transaction class' do
-      allow(transaction).to receive(:withdraw).and_return(500)
-      account.withdraw(:date, 500)
-      expect(transaction).to have_received(:withdraw).with(:date, 500)
+    it 'Calls #withdraw on the transaction class' do
+      expect(account.balance).to eq(100)
+    end
+    it 'Returns updated balance once withdraw has been called' do
+      expect(account.balance).to eq(100)
     end
   end
 

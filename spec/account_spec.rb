@@ -21,7 +21,7 @@ let(:date) { double(:date, :deposit) }
       expect(account).to respond_to(:deposit).with(2).argument
     end
     it 'Calls the method on transaction' do
-      expect(transaction).to have_received(:deposit).with(:date, 200)
+      expect(transaction).to have_received(:deposit).with(:date, 200, 200)
     end
     it 'Returns updated balance once deposit has been called' do
       expect(account.balance).to eq(200)
@@ -39,8 +39,8 @@ end
     it "Responds to the method" do
       expect(account).to respond_to(:withdraw).with(2).argument
     end
-    it 'Calls #withdraw on the transaction class' do
-      expect(account.balance).to eq(100)
+    it 'Calls the method on the transaction class' do
+      expect(transaction).to have_received(:withdraw).with(:date, 100, 100)
     end
     it 'Returns updated balance once withdraw has been called' do
       expect(account.balance).to eq(100)

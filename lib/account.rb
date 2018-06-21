@@ -13,12 +13,12 @@ end
 
 def deposit(date, amount)
   credit(amount)
-  transaction.deposit(date, amount)
+  transaction.deposit(date, amount, balance)
 end
 
 def withdraw(date, amount)
   debit(amount)
-  transaction.withdraw(date, amount)
+  transaction.withdraw(date, amount, balance)
 end
 
 private

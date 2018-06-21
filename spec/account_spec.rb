@@ -26,6 +26,9 @@ let(:date) { double(:date, :deposit) }
     it 'Returns updated balance once deposit has been called' do
       expect(account.balance).to eq(200)
     end
+    it 'Should raise an error if input type is not an integer' do
+      expect{ account.deposit(:date, "Yes") }.to raise_error("Please input an integer of a float")
+    end
   end
 end
 
@@ -44,6 +47,9 @@ end
     end
     it 'Returns updated balance once withdraw has been called' do
       expect(account.balance).to eq(100)
+    end
+    it 'Should raise an error if input type is not an integer' do
+      expect{ account.withdraw(:date, "Yes") }.to raise_error("Please input an integer of a float")
     end
   end
 

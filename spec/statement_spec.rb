@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require './spec/spec_helper.rb'
 require './lib/statement.rb'
 
 describe Statement do

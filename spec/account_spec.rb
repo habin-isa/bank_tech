@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require './spec/spec_helper.rb'
 require 'account.rb'
 
 # rubocop:disable LineLength
@@ -22,9 +23,6 @@ describe Account do
       account.deposit(:date, 200)
     end
     context 'User makes a deposit' do
-      it 'Responds to the method' do
-        expect(account).to respond_to(:deposit).with(2).argument
-      end
       it 'Calls the method on transaction' do
         expect(transaction).to have_received(:deposit).with(:date, 200, 200)
       end

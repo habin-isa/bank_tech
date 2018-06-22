@@ -9,11 +9,11 @@ describe Account do
   end
   it 'Allows a user to enter a deposit, with a date and amount' do
     account.deposit(:date, 200)
-    expect(account.transaction.transaction_list).to include([:date, 200, " ", 200])
+    expect(account.transaction.transaction_list).to include([:date, 200, "", 200])
   end
   it 'Allows a user to withdraw money, with a date and amount' do
     account.withdraw(:date, 500)
-    expect(account.transaction.transaction_list).to include([:date, " ", 500, -500])
+    expect(account.transaction.transaction_list).to include([:date, "", 500, -500])
   end
 
   context 'User pretty prints their statement' do
@@ -22,10 +22,10 @@ describe Account do
       "date || 1000 ||  || 1000\n" \
       "date || 2000 ||  || 3000\n" \
       "date ||  || 500 || 2500\n" \
-      "date ||  || 100 || 2400\n" \
+      "date ||  || 100 || 2400\n"
     }
 
-    it 'User deposits twice and withdraws twice, then pretty prints their statement' do
+    it 'User deposits twice and withdraws twice, then sees their statement printed' do
       account.deposit(:date, 1000)
       account.deposit(:date, 2000)
       account.withdraw(:date, 500)

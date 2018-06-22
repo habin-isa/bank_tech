@@ -7,10 +7,10 @@ def initialize
 end
 
 def deposit(date, amount, balance)
-  transaction_list.push([date, amount, " ", balance])
+  transaction_list.push([date, amount, "", balance])
 end
 
 def withdraw(date, amount, balance)
-  transaction_list.push([date, " ", amount, balance])
+  transaction_list.push([date, "", amount, balance])
 end
 end

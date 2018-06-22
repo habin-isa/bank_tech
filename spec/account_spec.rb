@@ -1,9 +1,10 @@
 require 'account.rb'
 
 describe Account do
-subject(:account) { described_class.new(transaction) }
+subject(:account) { described_class.new(transaction, statement) }
 let(:transaction) { double(:transaction) }
-let(:date) { double(:date, :deposit) }
+let(:date) { double(:date) }
+let(:statement) { double(:statement) }
 
   describe '#balance' do
     it 'Initializes as 0' do
@@ -59,4 +60,18 @@ end
     end
   end
 
+  describe '#statement' do
+    it 'Should be the statement' do
+      expect(account.statement).to eq(statement)
+    end
+  end
+
+describe '#display_statement' do
+    it 'Calls pretty_print on the statement object' do
+      allow(statement).to receive(:pretty_print)
+      allow(transaction).to receive(:transaction_list)
+      account.display_statement
+      expect(statement).to have_received(:pretty_print)
+    end
+end
 end

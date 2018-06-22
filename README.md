@@ -23,7 +23,7 @@ I want to be able to withdraw money from my balance
 As a user so I can check my account,
 I want to be able to see my statement with dates, deposits and balances
 
-![Alt text](https://github.com/habin-isa/bank_tech/blob/master/bank_model.png "Diagramming for class structure")
+![Alt text](https://github.com/habin-isa/bank_tech/blob/master/bank_model.jpg "Diagramming for class structure")
 
 **Testing package instructions:**
 (IRB shell testing in terminal)
@@ -32,5 +32,14 @@ I want to be able to see my statement with dates, deposits and balances
 - Gem install bundle
 - 'run bundle'
 - 'irb'
-- 'require './lib/account.rb'' (change according to the class you want to test methods for)
-- i.e. 'account.display'
+- 'require './lib/account.rb''
+- 'require './lib/transaction.rb''
+- 'require './lib/statement.rb''
+
+i.e:
+
+- a = Account.new(Transaction.new, Statement.new)
+- a.deposit("12-06-18", 300)
+- a.withdraw("13-06-18", 100)
+- a.balance
+- a.display_statement

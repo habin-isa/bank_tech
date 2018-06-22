@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/transaction.rb'
 
 describe Transaction do
@@ -9,17 +11,20 @@ describe Transaction do
     end
   end
 
+  # rubocop:disable LineLength
+
   describe '#deposit' do
     it 'Should log the deposit with date and debit amount' do
-      transaction.deposit("20-12-20", 200, 500)
-      expect(transaction.transaction_list).to include(["20-12-20", 200, "", 500])
+      transaction.deposit('20-12-20', 200, 500)
+      expect(transaction.transaction_list).to include(['20-12-20', 200, '', 500])
     end
   end
 
   describe '#withdraw' do
     it 'Should log the withdrawal with date and credit amount' do
-      transaction.withdraw("28-05-18", 100, 500)
-      expect(transaction.transaction_list).to include(["28-05-18", "", 100, 500])
+      transaction.withdraw('28-05-18', 100, 500)
+      expect(transaction.transaction_list).to include(['28-05-18', '', 100, 500])
     end
   end
+  # rubocop:enable LineLength
 end

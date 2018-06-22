@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Statement
   def pretty_print(transaction_list)
     puts title
@@ -9,6 +11,6 @@ class Statement
   private
 
   def title
-    "Date     || Credit || Debit || Balance"
+    'Date     || Credit || Debit || Balance'
   end
 end
